@@ -1,7 +1,6 @@
 #ifndef SANDBOX_H
 #define SANDBOX_H
 
-#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -39,5 +38,9 @@ int mkdir_p(const char *path, mode_t mode);
 int copy_file(const char *src, const char *dest);
 int is_static_elf(const char *path);
 int prepare_dynamic_libs(const char *binary_path, const char *sandbox_root);
+
+// 系统调用监控函数声明
+int setup_monitoring(pid_t child_pid);
+int prepare_traced_child(void);
 
 #endif // SANDBOX_H

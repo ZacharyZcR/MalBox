@@ -1,6 +1,6 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -pedantic -Iinclude
-LDFLAGS =
+CFLAGS = -Wall -Wextra -pedantic -Iinclude -D_GNU_SOURCE
+LDFLAGS = -lrt
 
 SRC_DIR = src
 OBJ_DIR = obj

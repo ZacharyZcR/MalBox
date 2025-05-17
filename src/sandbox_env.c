@@ -159,6 +159,16 @@ int child_func(void *arg) {
     }
 
     printf("在沙箱中执行程序: %s\n", exec_path);
+
+    // 开启ptrace跟踪
+    if (prepare_traced_child() == -1) {
+        printf("设置跟踪失败: %s\n", strerror(errno));
+        return EXIT_FAILURE;
+    }
+
+    printf("程序已准备好被跟踪\n");
+
+    // 执行程序
     if (execl(exec_path, binary_name, NULL) == -1) {
         printf("执行程序失败: %s\n", strerror(errno));
         return EXIT_FAILURE;

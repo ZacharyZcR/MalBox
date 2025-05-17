@@ -145,6 +145,10 @@ int main(int argc, char *argv[]) {
         perror("写入gid_map失败");
     }
 
+    // 启动系统调用监控
+    printf("启动系统调用监控...\n");
+    setup_monitoring(pid);
+
     // 等待子进程
     int status;
     printf("等待沙箱进程完成...\n");
